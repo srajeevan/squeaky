@@ -36,13 +36,18 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 233, 240, .72);
-  border-bottom: 1px solid rgba(242, 109, 126, .12);
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, .86);            /* white bar for contrast on the pink hero */
+  border-bottom: 1px solid rgba(242, 109, 126, .10);
+  box-shadow: 0 6px 24px rgba(122, 85, 64, .07);
 }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
-.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; }
-.brand img { width: 40px; height: 40px; border-radius: 11px; box-shadow: var(--shadow-sm); }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; color: var(--ink); }
+.brand img {
+  width: 42px; height: 42px; border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(242, 109, 126, .22);  /* defines the blush icon so it pops */
+  outline: 2px solid #fff; outline-offset: -1px;
+}
 .nav-links { display: flex; align-items: center; gap: 26px; font-weight: 600; color: var(--ink-soft); }
 .nav-links a:hover { color: var(--coral); }
 .nav-links .cta { color: #fff; }
@@ -169,6 +174,26 @@ footer .fbrand img { width: 36px; height: 36px; border-radius: 10px; }
 footer nav { display: flex; gap: 22px; font-weight: 500; }
 footer nav a:hover { color: #fff; }
 footer .copy { width: 100%; text-align: center; font-size: 13px; color: #8a8a97; margin-top: 26px; }
+
+/* ---------- Motion with purpose (scroll reveal) ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .08s; }
+.reveal.d2 { transition-delay: .16s; }
+.reveal.d3 { transition-delay: .24s; }
+.reveal.d4 { transition-delay: .32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  .hero .bubble { animation: none; }
+}
+
+/* physical button + card feedback */
+.btn:active { transform: translateY(1px) scale(.98); box-shadow: 0 6px 14px rgba(242,109,126,.3); }
+.chip { transition: transform .15s ease; }
+.value:hover .em { transform: scale(1.12); transition: transform .2s ease; }
+
+/* soft placeholders so lazy images don't flash white (feels faster) */
+.hero-phone img, .rail img { background: var(--mint); }
 
 /* ---------- Legal pages ---------- */
 .legal { background: var(--mint-top); min-height: 60vh; padding: 60px 0 90px; }

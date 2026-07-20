@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
 
@@ -69,25 +69,25 @@
   <!-- Features -->
   <section class="features center" id="features">
     <div class="wrap">
-      <h2 class="section-title">Made to melt the stress away</h2>
-      <p class="section-lead">Every tool has its own soft, close-mic'd sound and touch — designed to be enjoyed with headphones.</p>
+      <h2 class="section-title reveal">Made to melt the stress away</h2>
+      <p class="section-lead reveal d1">Every tool has its own soft, close-mic'd sound and touch — designed to be enjoyed with headphones.</p>
       <div class="feature-grid">
-        <div class="card">
+        <div class="card reveal d1">
           <div class="ic">🧴</div>
           <h3>Five ASMR tools</h3>
           <p>Spray, sponge, rinse, detail and blow-dry — each with its own satisfying sound and haptic feel.</p>
         </div>
-        <div class="card">
+        <div class="card reveal d2">
           <div class="ic">☕</div>
           <h3>Three vibe modes</h3>
           <p>Zen for zero pressure, Cozy for stars &amp; rewards, or Challenge to chase an S-rank.</p>
         </div>
-        <div class="card">
+        <div class="card reveal d3">
           <div class="ic">🧸</div>
           <h3>36 cute messes</h3>
           <p>Sneakers, mugs, keyboards, toys, garden bits and gloriously gross stuff — mud, grease, slime &amp; rust.</p>
         </div>
-        <div class="card">
+        <div class="card reveal d4">
           <div class="ic">🎁</div>
           <h3>Collect &amp; customize</h3>
           <p>Earn bubbles, open reward capsules, and deck out your backgrounds, foam, shelf and sparkles.</p>
@@ -99,14 +99,14 @@
   <!-- Steps -->
   <section class="steps center">
     <div class="wrap">
-      <h2 class="section-title">Dirty in. Sparkling out.</h2>
-      <p class="section-lead">One finger. The whole satisfying loop.</p>
+      <h2 class="section-title reveal">Dirty in. Sparkling out.</h2>
+      <p class="section-lead reveal d1">One finger. The whole satisfying loop.</p>
       <div class="step-row">
-        <div class="step"><div class="n">STEP 1</div><div class="em">🧴</div><h4>Spray</h4><p>Wet the mud (or soap the grease)</p></div>
-        <div class="step"><div class="n">STEP 2</div><div class="em">🧽</div><h4>Scrub</h4><p>Work up a foamy lather</p></div>
-        <div class="step"><div class="n">STEP 3</div><div class="em">🔫</div><h4>Rinse</h4><p>Wash it all away</p></div>
-        <div class="step"><div class="n">STEP 4</div><div class="em">🖌️</div><h4>Detail</h4><p>Get the stubborn bits</p></div>
-        <div class="step"><div class="n">STEP 5</div><div class="em">💨</div><h4>Dry</h4><p>Blow-dry to a shine</p></div>
+        <div class="step reveal"><div class="n">STEP 1</div><div class="em">🧴</div><h4>Spray</h4><p>Wet the mud (or soap the grease)</p></div>
+        <div class="step reveal d1"><div class="n">STEP 2</div><div class="em">🧽</div><h4>Scrub</h4><p>Work up a foamy lather</p></div>
+        <div class="step reveal d2"><div class="n">STEP 3</div><div class="em">🔫</div><h4>Rinse</h4><p>Wash it all away</p></div>
+        <div class="step reveal d3"><div class="n">STEP 4</div><div class="em">🖌️</div><h4>Detail</h4><p>Get the stubborn bits</p></div>
+        <div class="step reveal d4"><div class="n">STEP 5</div><div class="em">💨</div><h4>Dry</h4><p>Blow-dry to a shine</p></div>
       </div>
     </div>
   </section>
@@ -114,8 +114,8 @@
   <!-- Screenshots -->
   <section class="gallery center" id="screens">
     <div class="wrap">
-      <h2 class="section-title">See the sparkle</h2>
-      <p class="section-lead">Swipe through the little transformations.</p>
+      <h2 class="section-title reveal">See the sparkle</h2>
+      <p class="section-lead reveal d1">Swipe through the little transformations.</p>
     </div>
     <div class="rail">
       <img src="assets/slides/slide-01.png" alt="That filthy? Fix it." loading="lazy" />
@@ -134,9 +134,9 @@
   <!-- Price -->
   <section class="price" id="price">
     <div class="wrap">
-      <div class="tag">$3.99</div>
-      <div class="big">Once. That's the whole thing.</div>
-      <p>The first pack is free. Unlock every object, every pack, forever — with a single purchase. No ads, no subscription, no tricks. Just clean.</p>
+      <div class="tag reveal">$3.99</div>
+      <div class="big reveal d1">Once. That's the whole thing.</div>
+      <p class="reveal d2">The first pack is free. Unlock every object, every pack, forever — with a single purchase. No ads, no subscription, no tricks. Just clean.</p>
       <div class="chips" style="justify-content:center">
         <span class="chip">🚫 No ads</span>
         <span class="chip">♾️ No subscription</span>
@@ -168,5 +168,14 @@
     </div>
   </footer>
 
+  <script>
+    // Motion with purpose: reveal sections as they scroll into view (once).
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
 </body>
 </html>
